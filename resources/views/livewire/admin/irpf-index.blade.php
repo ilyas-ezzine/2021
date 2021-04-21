@@ -14,7 +14,7 @@
             @if ($ingresos->count())
 
                 <div class="card-body  m-4">
-                    <h3> partidas de ingresos</h3>
+                    <h3> partidas de ingresos entre fechas: {{ $desde }} y {{ $hasta }}</h3>
                     <table class='table table-striped'>
                         <thead>
                             <tr>
@@ -43,7 +43,7 @@
                 </div>
 
                 <div class="card-body  m-4">
-                    <h3> partidas de gastos</h3>
+                    <h3> partidas de gastos entre fechas: {{ $desde }} y {{ $hasta }}</h3>
                     <table class='table table-striped'>
                         <thead>
                             <tr>
@@ -74,25 +74,46 @@
 
 
                 <div class="card-body bg-info m-4">
-                    <h2 class="text-justify"> balance entre fechas: {{ $desde }} y {{ $hasta }}
-                    </h2>
+                    <h2 class="text-justify"> balance ejercicio: {{ $ejercicio }} </h2>
                     <table class='table table-striped'>
                         <thead>
                             <tr>
+                                <th> Trimestre</th>
                                 <th>suma de ingresos</th>
                                 <th>suma de gastos</th>
                                 <th>Diferencia  </th>
-                                <th>Total pagado antes</th>
-                                <th>total a pagar </th>
+                                
+                                <th>total a pagar/pagado </th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>{{ $sumaI }}</td>
-                                <td>{{ $sumaG }}</td>
-                                <td>{{ $sumaI - $sumaG  }}</td>
-                                <td></td>
-                                <td>{{ $sumaI - $sumaG }}</td>
+                            <tr><td> T1 </td>
+                                <td>{{ $sumaI1 }}</td>
+                                <td>{{ $sumaG1 }}</td>
+                                <td>{{ $sumaI1 - $sumaG1  }}</td>
+                                
+                                <td>{{ 0.2*($sumaI1 - $sumaG1) }}</td>
+                            </tr>
+                            <tr><td> T2 </td>1
+                                <td>{{ $sumaI2 }}</td>
+                                <td>{{ $sumaG2 }}</td>
+                                <td>{{ $sumaI2 - $sumaG2  }}</td>
+                                
+                                <td>{{ 0.2*($sumaI2 - $sumaG2) }}</td>
+                            </tr>
+                            <tr><td> T3 </td>
+                                <td>{{ $sumaI3 }}</td>
+                                <td>{{ $sumaG3 }}</td>
+                                <td>{{ $sumaI3 - $sumaG3  }}</td>
+                                
+                                <td>{{ 0.2*($sumaI3 - $sumaG3) }}</td>
+                            </tr>
+                            <tr><td> T4 </td>
+                                <td>{{ $sumaI4 }}</td>
+                                <td>{{ $sumaG4 }}</td>
+                                <td>{{ $sumaI4 - $sumaG4  }}</td>
+                                
+                                <td>{{ 0.2*($sumaI4 - $sumaG4) }}</td>
                             </tr>
                 </div>
             </div>

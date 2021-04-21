@@ -8,10 +8,6 @@
                 placeholder="ingrese el Ejercicio">
         </div>
 
-        <div class="card-body">
-            <button class="btn btn-primary"><a href="{{ route('admin.otrosgastos.create') }}">Añadir
-                    otrosgasto</a></button>
-        </div>
         @if ($gastos->count() && $ingresos->count())
 
             <div class="card-body  m-4">
@@ -46,10 +42,8 @@
                         @endforeach
                         </tr>
                     </tbody>
-
                 </table>
-
-
+                </div>
 
                 <div class="card-body  m-4">
 
@@ -85,38 +79,39 @@
                             </tr>
                         </tbody>
                     </table>
-                    <div class="card-body bg-info m-4">
-                        <h2 class="text-justify"> balance entre fechas: {{ $desde }} y {{ $hasta }}
-                        </h2>
-                        <table class='table table-striped'>
-                            <thead>
-                                <tr>
-                                    <th>suma de ingresos</th>
-                                    <th>Iva repercutido</th>
-                                    <th>suma de gastos </th>
-                                    <th>IVA soportado</th>
-                                    <th>total a pagar </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>{{ $sumaI }}</td>
-                                    <td>{{ $sumaIVAI * 0.21 }}</td>
-                                    <td>{{ $sumaG }}</td>
-                                    <td>{{ $sumaIVAg10 * 0.1 + $sumaIVAg21 * 0.21 }}</td>
-                                    <td>{{ $sumaIVAI * 0.21 - ($sumaIVAg10 * 0.1 + $sumaIVAg21 * 0.21) }}</td>
-                                </tr>
-                    </div>
                 </div>
-                <div class="card-footer">
-                    {{ $gastos->links() }}
+                <div class="card-body bg-info m-4">
+                    <h2 class="text-justify"> balance entre fechas: {{ $desde }} y {{ $hasta }}
+                    </h2>
+                    <table class='table table-striped'>
+                        <thead>
+                            <tr>
+                                <th>suma de ingresos</th>
+                                <th>Iva repercutido</th>
+                                <th>suma de gastos </th>
+                                <th>IVA soportado</th>
+                                <th>total a pagar </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{ $sumaI }}</td>
+                                <td>{{ $sumaIVAI * 0.21 }}</td>
+                                <td>{{ $sumaG }}</td>
+                                <td>{{ $sumaIVAg10 * 0.1 + $sumaIVAg21 * 0.21 }}</td>
+                                <td>{{ $sumaIVAI * 0.21 - ($sumaIVAg10 * 0.1 + $sumaIVAg21 * 0.21) }}</td>
+                            </tr>
                 </div>
+            </div>
+            <div class="card-footer">
+                {{ $gastos->links() }}
+            </div>
 
 
-            @else
-                <div class="card-body">
-                    <strong>No hay Facturas en este periodo</strong>
-                </div>
+        @else
+            <div class="card-body">
+                <strong>No hay Facturas en este periodo</strong>
+            </div>
 
 
         @endif
